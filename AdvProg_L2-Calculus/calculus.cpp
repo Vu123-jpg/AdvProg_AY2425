@@ -20,7 +20,12 @@ double mySqrt(double x);
 ***/
 double myCos(double x) 
 {
-    return 0.0;
+	double result = 0.0;
+	for (int i = 0; i < 15; i++)
+	{
+		result += pow(-1, i) * pow(x, 2 * i) / factorial(2 * i);
+	}
+	return result;
 }
 
 /***
@@ -31,6 +36,11 @@ double myCos(double x)
 ***/
 double mySin(double x)
 {
+	double result = 0.0;
+    for (int i = 0; i < 15; i++)
+    {
+		result += pow(-1, i) * pow(x, 2 * i + 1) / factorial(2 * i + 1);
+    }
     return 0.0;
 }
 
@@ -46,7 +56,15 @@ double mySqrt(double x) {
         cout << "Invalid argument" << endl;
         exit(1);
     }
+    else
+    {
+		double result = x;
+		double epsilon = 0.00001;
+		while (abs(result * result - x) > epsilon)
+		{
+			result = (result + x / result) / 2;
+		}
+		return result;
 
-    
-    return 0;
+   
 }
